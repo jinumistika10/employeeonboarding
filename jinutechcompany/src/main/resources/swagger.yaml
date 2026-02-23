@@ -1,0 +1,55 @@
+openapi: 3.0.0
+info:
+  title: Onboarding Employee Management
+  version: 1.0.0
+  description: Creating CRUD operations for JinuTech Company
+
+paths:
+  /employee:
+    post:
+      tags:
+        - Employee
+      summary: Adding Employees to JinuTech Company
+      operationId: addEmployees
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmployeeDTO'
+      responses:
+        '201':
+          description: "Employees are added successfully"
+          content:
+            application/json:
+              schema:
+                type: string
+
+    get:
+      tags:
+        - Employee
+      summary: Fetchiing all employee details
+      operationId: getEmployees
+      responses:
+        '200':
+          description: Employees are fetched successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EmployeeDTO'
+
+components:
+  schemas:
+    EmployeeDTO:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        role:
+          type: string
+        salary:
+          type: integer
+
